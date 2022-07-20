@@ -1,0 +1,44 @@
+body {
+    background-color: #EEE2DF;
+    font-family: ""
+}
+
+h1 {
+    font-family: "Libre Baskerville", "Times New Roman", sans-serif;
+    font-size: 54px;
+    font-weight: 700;
+    text-align: center;
+}
+
+h2 {
+    font-family: "Libre Baskerville", "Times New Roman", sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+}
+
+button {
+    border-style: none;
+    border-radius: 24px;
+    padding: 0px 24px;
+    height: 40px;
+}
+
+.calculation-entry {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    flex: 1;
+    height: 56px;
+    border-radius: 32px;
+    border: solid grey 1px;
+    padding: 0px 16px;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
