@@ -1,4 +1,5 @@
 body {
+    display: flex;
     background-color: #EEE2DF;
     margin: 0;
 }
@@ -7,16 +8,13 @@ h1 {
     font-family: "Libre Baskerville", "Times New Roman", sans-serif;
     font-size: 54px;
     font-weight: 700;
-    text-align: center;
     margin: 0;
-    padding: 10px;
 }
 
 h2 {
     font-family: "Libre Baskerville", "Times New Roman", sans-serif;
     font-size: 20px;
     font-weight: normal;
-    text-align: center;
     margin: 0;
 }
 
@@ -29,10 +27,6 @@ button {
 }
 
 .headline {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10 px;
     margin-bottom: 54px;
 }
 
@@ -54,11 +48,23 @@ input {
     color: #8A8A8A;
 }
 
+.background {
+    /*background-image: url("images/fibonacci.jpg");*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: -200px;
+}
+
 #main {
     display: flex;
+    flex: 1;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+.main-area {
+    width: 390px;
 }
 
 
@@ -83,4 +89,9 @@ input {
 
 #reset {
     background-color: #E4612D;
+}
+
+#results {
+    flex: 1;
+    background-color: #011627;
 }
