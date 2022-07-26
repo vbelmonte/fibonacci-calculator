@@ -2,10 +2,11 @@ body {
     display: flex;
     background-color: #EEE2DF;
     margin: 0;
+    font-family: "Montserrat", "Arial", sans-serif;
 }
 
 h1 {
-    font-family: "Libre Baskerville", "Times New Roman", sans-serif;
+    font-family: "Libre Baskerville", "Times New Roman", serif;
     font-size: 54px;
     font-weight: 700;
     margin: 0;
@@ -57,7 +58,7 @@ input {
 
 #main {
     display: flex;
-    flex: 1;
+    width: 50%;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -94,4 +95,12 @@ input {
 #results {
     flex: 1;
     background-color: #011627;
+    box-sizing: border-box;
+    padding: 100px;
+}
+
+
+#results .output {
+    color: #FF9F1C;
+    font-weight: bold;
 }
