@@ -1,7 +1,13 @@
 const fibonacci = function(member) {
-    if (member <= 0 || isNaN(member)) {
-        console.log("Error! Please enter a number that is greater than 0");
-        return "Error! Please enter a number that is greater than 0";
+    console.log(member);
+    if (member <= 0) {
+        console.log("Error! Please enter a number that is greater than 0.");
+        return "Error! Please enter a number that is greater than 0.";
+    }
+
+    else if (isNaN(member)) {
+        console.log("Error! Please enter a valid number.");
+        return "Error! Please enter a valid number.";
     }
 
     let i = 1;
@@ -26,7 +32,27 @@ let output = document.querySelector(".output");
 
 function getNthNumber() {
     let result = calculate();
-    printOutResults(result);
+    let input = document.querySelector("input").value;
+    if (isNaN(result)) {
+        //print out error
+        printOutResults(result);
+    }
+    else {
+        printOutResults(result, input);
+    }
+}
+
+function clearOutput() {
+    clearText();
+    clearInput();
+}
+
+function clearText() {
+    output.textContent = "";
+}
+
+function clearInput() {
+    document.querySelector("input").value = "";
 }
 
 function calculate() {
@@ -34,10 +60,16 @@ function calculate() {
     return fibonacci(result);
 }
 
-function printOutResults(result) {
-    output.textContent = result;
+function printOutResults(result, entry = undefined) {
+    if (entry == undefined) {
+        output.textContent = result;
+    }
+    else {
+        output.textContent = "F" + entry + ": " + result;
+    }
 }
 
 getNumber.addEventListener("click", getNthNumber);
+reset.addEventListener("click", clearOutput);
 /*getSequence.addEventListener("click", helloWorldGetSequence);
 reset.addEventListener("click", helloWorldReset);*/
