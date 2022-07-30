@@ -28,6 +28,7 @@ let getNumber = document.querySelector("#get-number");
 let getSequence = document.querySelector("#get-sequence");
 let reset = document.querySelector("#reset");
 let output = document.querySelector(".output");
+let resultOutput = "";
 /*let input = document.querySelector("input");*/
 
 function getNthNumber() {
@@ -35,24 +36,34 @@ function getNthNumber() {
     let result = calculate(input);
     if (isNaN(result)) {
         //print out error
-        printOutResults(result);
+        printOutResultsSingle(result);
     }
     else {
-        printOutResults(result, input);
+        printOutResultsSingle(result, input);
     }
 }
 
 function getSequenceToNthNumber() {
+    clearResultOutput();
     let result = undefined;
     let input = document.querySelector("input").value;
     for (let i = 1; i <= input; i++) {
-        
+        result = calculate(i);
+        if (isNaN(result)) {
+            //print out error
+            printOutResultsSequence(result);
+            break;
+        }
+        else {
+            printOutResultsSequence(result, i);
+        }
     }
 }
 
 function clearOutput() {
     clearText();
     clearInput();
+    clearResultOutput();
 }
 
 function clearText() {
@@ -63,21 +74,35 @@ function clearInput() {
     document.querySelector("input").value = "";
 }
 
+function clearResultOutput() {
+    resultOutput = "";
+    output.innerHTML = resultOutput;
+}
+
 function calculate(entry) {
     return fibonacci(entry);
 }
 
-function printOutResults(result, entry = undefined) {
-    if (entry == undefined) {
+function printOutResultsSingle(result, nth = undefined) {
+    if (nth == undefined) {
         output.textContent = result;
     }
     else {
-        output.textContent = "F" + entry + ": " + result;
+        output.textContent = "F" + nth + ": " + result;
+    }
+}
+
+function printOutResultsSequence(result, nth = undefined) {
+    if (nth == undefined) {
+        output.textContent = result;
+    }
+    else {
+        let textOutput = "F" + nth + ": " + result + "<br>";
+        resultOutput = resultOutput + textOutput;
+        output.innerHTML = resultOutput;
     }
 }
 
 getNumber.addEventListener("click", getNthNumber);
 getSequence.addEventListener("click", getSequenceToNthNumber);
 reset.addEventListener("click", clearOutput);
-/*getSequence.addEventListener("click", helloWorldGetSequence);
-reset.addEventListener("click", helloWorldReset);*/
