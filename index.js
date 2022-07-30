@@ -31,14 +31,22 @@ let output = document.querySelector(".output");
 /*let input = document.querySelector("input");*/
 
 function getNthNumber() {
-    let result = calculate();
     let input = document.querySelector("input").value;
+    let result = calculate(input);
     if (isNaN(result)) {
         //print out error
         printOutResults(result);
     }
     else {
         printOutResults(result, input);
+    }
+}
+
+function getSequenceToNthNumber() {
+    let result = undefined;
+    let input = document.querySelector("input").value;
+    for (let i = 1; i <= input; i++) {
+        
     }
 }
 
@@ -55,9 +63,8 @@ function clearInput() {
     document.querySelector("input").value = "";
 }
 
-function calculate() {
-    let result = document.querySelector("input").value;
-    return fibonacci(result);
+function calculate(entry) {
+    return fibonacci(entry);
 }
 
 function printOutResults(result, entry = undefined) {
@@ -70,6 +77,7 @@ function printOutResults(result, entry = undefined) {
 }
 
 getNumber.addEventListener("click", getNthNumber);
+getSequence.addEventListener("click", getSequenceToNthNumber);
 reset.addEventListener("click", clearOutput);
 /*getSequence.addEventListener("click", helloWorldGetSequence);
 reset.addEventListener("click", helloWorldReset);*/
