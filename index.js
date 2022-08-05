@@ -34,19 +34,10 @@ const fibonacci = function(member) {
 
 function getNthNumber() {
     let input = document.querySelector("input").value;
-    let result = calculate(input);
-    /*if (isNaN(result)) {
-        //print out error
-        printOutResultsSingle(result);
-    }
-    else {
-        printOutResultsSingle(result, input);
-    }*/
     if (inputChecker(input) == false) {
         printOutError(inputErrorMessage(input));
     }
     else {
-        /*console.log("This is a valid number!");*/
         let result = calculate(input);
         printOutResultsSingle(result, input);
     }
@@ -70,9 +61,14 @@ function getSequenceToNthNumber() {
     }*/
     if (inputChecker(input) == false) {
         console.log(inputErrorMessage(input));
+        printOutError(inputErrorMessage(input));
     }
     else {
         console.log("This is a valid number!");
+        for (let i = 1; i <= input; i++) {
+            result = calculate(i);
+            printOutResultsSequence(result, i);
+        }
     }
 }
 
