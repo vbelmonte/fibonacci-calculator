@@ -3,6 +3,7 @@ body {
     background-color: #EEE2DF;
     margin: 0;
     font-family: "Inter", "Arial", sans-serif;
+    min-height: 100vh;
 }
 
 h1 {
@@ -68,7 +69,7 @@ input {
     /*background-image: url("images/fibonacci.jpg");*/
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-x: -200px;
+    background-position: center;
 }
 
 #main {
@@ -76,11 +77,13 @@ input {
     width: 50%;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
 .main-area {
     width: 390px;
+    position: fixed;
+    top: 50%;
+    transform: translate(0%, -50%);
 }
 
 
