@@ -7,8 +7,8 @@ let resultOutput = "";
 
 
 const fibonacci = function(member) {
-    console.log(member);
-    /*if (member <= 0) {
+    /*console.log(member);
+    if (member <= 0) {
         console.log("Error! Please enter a number that is greater than 0.");
         return "Error! Please enter a number that is greater than 0.";
     }
@@ -34,8 +34,8 @@ const fibonacci = function(member) {
 
 function getNthNumber() {
     let input = document.querySelector("input").value;
-    /*let result = calculate(input);
-    if (isNaN(result)) {
+    let result = calculate(input);
+    /*if (isNaN(result)) {
         //print out error
         printOutResultsSingle(result);
     }
@@ -43,10 +43,12 @@ function getNthNumber() {
         printOutResultsSingle(result, input);
     }*/
     if (inputChecker(input) == false) {
-        console.log(inputErrorMessage(input));
+        printOutError(inputErrorMessage(input));
     }
     else {
-        console.log("This is a valid number!");
+        /*console.log("This is a valid number!");*/
+        let result = calculate(input);
+        printOutResultsSingle(result, input);
     }
 }
 
@@ -122,6 +124,10 @@ function printOutResultsSequence(result, nth = undefined) {
         resultOutput = resultOutput + textOutput;
         output.innerHTML = resultOutput;
     }
+}
+
+function printOutError(input) {
+    output.textContent = input;
 }
 
 
