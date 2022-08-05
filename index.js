@@ -3,21 +3,15 @@ let getSequence = document.querySelector("#get-sequence");
 let reset = document.querySelector("#reset");
 let output = document.querySelector(".output");
 let resultOutput = "";
-/*let input = document.querySelector("input");*/
 
+
+/************************************
+  
+CALCULATIONS AND OTHER FUNCTIONS
+
+************************************/
 
 const fibonacci = function(member) {
-    /*console.log(member);
-    if (member <= 0) {
-        console.log("Error! Please enter a number that is greater than 0.");
-        return "Error! Please enter a number that is greater than 0.";
-    }
-
-    else if (isNaN(member)) {
-        console.log("Error! Please enter a valid number.");
-        return "Error! Please enter a valid number.";
-    }*/
-
     let i = 1;
     let base = 0;
     let nextNumber = 1;
@@ -32,46 +26,59 @@ const fibonacci = function(member) {
 };
 
 
-function getNthNumber() {
-    let input = document.querySelector("input").value;
-    if (inputChecker(input) == false) {
-        printOutError(inputErrorMessage(input));
+function calculate(entry) {
+    return fibonacci(entry);
+}
+
+
+
+/************************************
+  
+CASE CHECKERS
+
+************************************/
+
+function inputChecker(input) {
+    if (isNaN(input)) {
+        return false;
+    }
+    else if (input == "") {
+        return false;
+    }
+    else if (Number.isInteger(parseFloat(input)) == false) {
+        return false;
+    }
+    else if (input <= 0) {
+        return false;
     }
     else {
-        let result = calculate(input);
-        printOutResultsSingle(result, input);
+        return true;
+    }
+}
+
+function inputErrorMessage(input) {
+    if (isNaN(input)) {
+        return "Error! Please enter a valid number.";
+    }
+    else if (input == "") {
+        return "Input is empty";
+    }
+    else if (Number.isInteger(parseFloat(input)) == false) {
+        return "Error! Please enter a valid number.";
+    }
+    else if (input <= 0) {
+        return "Error! Please enter a number that is greater than 0.";
     }
 }
 
 
-function getSequenceToNthNumber() {
-    clearResultOutput();
-    let result = undefined;
-    let input = document.querySelector("input").value;
-    /*for (let i = 1; i <= input; i++) {
-        result = calculate(i);
-        if (isNaN(result)) {
-            //print out error
-            printOutResultsSequence(result);
-            break;
-        }
-        else {
-            printOutResultsSequence(result, i);
-        }
-    }*/
-    if (inputChecker(input) == false) {
-        console.log(inputErrorMessage(input));
-        printOutError(inputErrorMessage(input));
-    }
-    else {
-        console.log("This is a valid number!");
-        for (let i = 1; i <= input; i++) {
-            result = calculate(i);
-            printOutResultsSequence(result, i);
-        }
-    }
-}
 
+
+/************************************
+  
+CLEAR
+
+************************************/
 
 function clearOutput() {
     clearText();
@@ -96,10 +103,13 @@ function clearResultOutput() {
 }
 
 
-function calculate(entry) {
-    return fibonacci(entry);
-}
 
+
+/************************************
+  
+PRINTERS
+
+************************************/
 
 function printOutResultsSingle(result, nth = undefined) {
     if (nth == undefined) {
@@ -127,33 +137,6 @@ function printOutError(input) {
 }
 
 
-function inputChecker(input) {
-    if (isNaN(input)) {
-        return false;
-    }
-    else if (input == "") {
-        return false;
-    }
-    else if (input <= 0) {
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-
-function inputErrorMessage(input) {
-    if (isNaN(input)) {
-        return "Error! Please enter a valid number.";
-    }
-    else if (input == "") {
-        return "Input is empty";
-    }
-    else if (input <= 0) {
-        return "Error! Please enter a number that is greater than 0.";
-    }
-}
-
 
 
 /************************************
@@ -161,6 +144,34 @@ function inputErrorMessage(input) {
 BUTTON FUNCTIONS
 
 ************************************/
+
+function getNthNumber() {
+    let input = document.querySelector("input").value;
+    if (inputChecker(input) == false) {
+        printOutError(inputErrorMessage(input));
+    }
+    else {
+        let result = calculate(input);
+        printOutResultsSingle(result, input);
+    }
+}
+
+
+function getSequenceToNthNumber() {
+    clearResultOutput();
+    let result = undefined;
+    let input = document.querySelector("input").value;
+    if (inputChecker(input) == false) {
+        printOutError(inputErrorMessage(input));
+    }
+    else {
+        for (let i = 1; i <= input; i++) {
+            result = calculate(i);
+            printOutResultsSequence(result, i);
+        }
+    }
+}
+
 
 getNumber.addEventListener("click", getNthNumber);
 getSequence.addEventListener("click", getSequenceToNthNumber);
