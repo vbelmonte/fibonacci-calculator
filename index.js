@@ -71,6 +71,18 @@ function inputErrorMessage(input) {
     }
 }
 
+function checkInputNumberLimit(input) {
+    if (input <= 100) {
+        return true;
+    }
+}
+
+function inputNumberLimitMessage(input) {
+    if (input > 100) {
+        return "Please enter a number that is less than or equal to 100.";
+    }
+}
+
 
 
 
@@ -151,8 +163,13 @@ function getNthNumber() {
         printOutError(inputErrorMessage(input));
     }
     else {
-        let result = calculate(input);
-        printOutResultsSingle(result, input);
+        if (checkInputNumberLimit(input)) {
+            let result = calculate(input);
+            printOutResultsSingle(result, input);
+        }
+        else {
+            printOutError(inputNumberLimitMessage(input));
+        }
     }
 }
 
@@ -165,9 +182,14 @@ function getSequenceToNthNumber() {
         printOutError(inputErrorMessage(input));
     }
     else {
-        for (let i = 1; i <= input; i++) {
-            result = calculate(i);
-            printOutResultsSequence(result, i);
+        if (checkInputNumberLimit(input)) {
+            for (let i = 1; i <= input; i++) {
+                result = calculate(i);
+                printOutResultsSequence(result, i);
+            }
+        }
+        else {
+            printOutError(inputNumberLimitMessage(input));
         }
     }
 }
