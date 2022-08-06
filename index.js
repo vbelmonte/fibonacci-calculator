@@ -138,7 +138,7 @@ function printOutResultsSequence(result, nth = undefined) {
         output.textContent = result;
     }
     else {
-        let textOutput = "F<sub>" + nth + "</sub>: " + result + "<br>";
+        let textOutput = "<p>F<sub>" + nth + "</sub>: " + result + "</p>";
         resultOutput = resultOutput + textOutput;
         output.innerHTML = resultOutput;
     }
